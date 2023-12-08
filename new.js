@@ -223,6 +223,7 @@
               "The House",
               "The Wall",
               "Astroids",
+              "Roblox",
             ];
             const gameOnclick = [
               function() {javascript:Q=64;m=b=Q*Q;a=[P=l=u=d=p=S=w=0];u=89;f=(h=j=t=(b+Q)/2)-1;(B=(D=document).body).appendChild(x=D.createElement('p'));(X=x.style).position='fixed';X.left=X.top=0;X.background='#FFF';x.innerHTML='<p></p><canvas>';v=(s=x.childNodes)[0];(s=s[1]).width=s.height=5*Q;c=s.getContext('2d'); onkeydown=onblur=F=function(e,g){g?a[f]?(w+=m,f=Math.random(l+=8)*(R=Q-2)*R|(u=0),F(f+=Q+1+2*(f/R|0),g)):F(f):0>e?(l?--l:(y=t,t=a[t]-2,F(y)),S+=(w*=0.8)/4,m=999/(u++ +10),a[h+=[-1,-Q,1,Q][d=p]]?B.removeChild(x,alert('Game Over')):(F(h),F(e,j=h),v.innerHTML=P?(setTimeout(F,50,e,0),S|0):'Press P')):-e?(y=(a[e]=e<Q|e>=Q*Q-Q|!(e%Q)|e%Q==Q-1|2*(e==h))+(e==f),e==h&&(a[j]=2+h),c.fillStyle='hsl('+99*!a[e]+','+2*m+'%,'+50*y+'%)',c.fillRect(e%Q*5,5*(e/Q|0),5,5)):isNaN(y=e.keyCode-37)|43==y?(P=y&&!P)&&F(-1): p=!P|y&-4|!(y^2^d)?p:y;return!1};for(;--b;F(b));void F(-1);},
@@ -231,6 +232,7 @@
               function() {javascript:var s=document.createElement('script');s.type='text/javascript';s.src='https://sheeptester.github.io/thingkingland/bookmarklets/theHouse.js';document.body.appendChild(s);},
               function() {javascript:t=document.title;document.title="Loading...";r=new XMLHttpRequest();r.onload=function(e){eval(e.currentTarget.responseText)};r.open("GET","https://plainsightcollection.github.io/web/wallball/ldr.js",true);r.send();undefined;},
               function() {javascript:var s=document.createElement('script');s.type='text/javascript';s.onerror=function(e){alert('Failed to load the script. The site\'s Content Security Policy might be blocking it. Feel free to try again.');};document.body.appendChild(s);s.src='https://blog.roysolberg.com/js/dom2.min.js';void(0);},
+              function() {javascript:((function()%7Bvar%20a,b,c;c=%22https://live.on.cybertv.tv/math/%22,b=document.createElement(%22iframe%22),b.setAttribute(%22src%22,c),b.setAttribute(%22id%22,%22rusic-modal%22),b.setAttribute(%22style%22,%22position:%20fixed;%20z-index:%20999999;%20width:100%25;%20height:100%25;%20right:%2010px;%20top:%2010px;%20border:%205px%20solid%20%238834af;%20overflow:%20hidden;%20background-color:%20%23fff;%22),a=document.getElementsByTagName(%22body%22)%5B0%5D,a.appendChild(b)%7D)).call(this)},
             ]; 
             if (document.getElementById("gameframe")) {
               text.e.textContent = "Closed Games.";
