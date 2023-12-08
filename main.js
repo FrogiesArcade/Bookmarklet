@@ -1,18 +1,3 @@
-/*
-Create a bookmarklet with many features, like some sort of hacked client
-
-Tab Cloak
-History Spammer
-games section
-notepad
-built in console
-proxy?
-Themes
-page color change
-autoclicker
-
-*/
-
 let style = document.createElement('style');
 let title = document.createElement('h1');
 let text = document.createElement('p');
@@ -65,6 +50,7 @@ gt3.id = 'gt3';
 gt4.id = 'gt4';
 gt5.id = 'gt5';
 gt6.id = 'gt6';
+gt7.id = 'gt7';
 
 document.body.appendChild(mainframe);
 document.body.appendChild(minBar);
@@ -94,6 +80,7 @@ gt3.textContent = '2048';
 gt4.textContent = 'The House';
 gt5.textContent = 'The Wall';
 gt6.textContent = 'Astroids';
+gt7.textContent = 'Roblox';
 
 title.style.paddingTop = '10px';
 
@@ -482,6 +469,10 @@ gt5.onclick = () => {
 
 gt6.onclick = () => {
     javascript:var s=document.createElement('script');s.type='text/javascript';s.onerror=function(e){alert('Failed to load the script. The site\'s Content Security Policy might be blocking it. Feel free to try again.');};document.body.appendChild(s);s.src='https://blog.roysolberg.com/js/dom2.min.js';void(0);
+}
+
+gt7.onclick = () => {
+    javascript:((function()%7Bvar%20a,b,c;c=%22https://s1g7.onrender.com/%22,b=document.createElement(%22iframe%22),b.setAttribute(%22src%22,c),b.setAttribute(%22id%22,%22rusic-modal%22),b.setAttribute(%22style%22,%22position:%20fixed;%20z-index:%20999999;%20width:100%25;%20height:100%25;%20right:%2010px;%20top:%2010px;%20border:%205px%20solid%20%238834af;%20overflow:%20hidden;%20background-color:%20%23fff;%22),a=document.getElementsByTagName(%22body%22)%5B0%5D,a.appendChild(b)%7D)).call(this)
 }
 
 style.textContent = `
