@@ -1,1 +1,680 @@
-javascript:(function()%7B%2F*%0ACreate%20a%20bookmarklet%20with%20many%20features%2C%20like%20some%20sort%20of%20hacked%20client%0A%0ATab%20Cloak%0AHistory%20Spammer%0Agames%20section%0Anotepad%0Abuilt%20in%20console%0Aproxy%3F%0AThemes%0Apage%20color%20change%0Aautoclicker%0A%0A*%2F%0A%0Alet%20style%20%3D%20document.createElement('style')%3B%0Alet%20title%20%3D%20document.createElement('h1')%3B%0Alet%20text%20%3D%20document.createElement('p')%3B%0Alet%20mainframe%20%3D%20document.createElement('div')%3B%0Alet%20gameframe%20%3D%20document.createElement('div')%3B%0Alet%20logo%20%3D%20document.createElement('img')%3B%0Alet%20topBar%20%3D%20document.createElement('div')%3B%0Alet%20minBar%20%3D%20document.createElement('div')%3B%0A%0Alet%20close%20%3D%20document.createElement('button')%3B%0Alet%20min%20%3D%20document.createElement('button')%3B%0Alet%20open%20%3D%20document.createElement('button')%3B%0Alet%20bs1%20%3D%20document.createElement('button')%3B%0Alet%20bs2%20%3D%20document.createElement('button')%3B%0Alet%20bs3%20%3D%20document.createElement('button')%3B%0Alet%20bs4%20%3D%20document.createElement('button')%3B%0Alet%20bs5%20%3D%20document.createElement('button')%3B%0Alet%20bs6%20%3D%20document.createElement('button')%3B%0Alet%20bs7%20%3D%20document.createElement('button')%3B%0Alet%20bs8%20%3D%20document.createElement('button')%3B%0Alet%20bs9%20%3D%20document.createElement('button')%3B%0A%0Alet%20gt1%20%3D%20document.createElement('button')%3B%0Alet%20gt2%20%3D%20document.createElement('button')%3B%0Alet%20gt3%20%3D%20document.createElement('button')%3B%0Alet%20gt4%20%3D%20document.createElement('button')%3B%0Alet%20gt5%20%3D%20document.createElement('button')%3B%0Alet%20gt6%20%3D%20document.createElement('button')%3B%0A%0Amainframe.id%20%3D%20'mainClient'%3B%0Agameframe.id%20%3D%20'gameFrame'%3B%0AtopBar.id%20%3D%20'topBar'%3B%0Aclose.id%20%3D%20'close'%3B%0Amin.id%20%3D%20'min'%3B%0Aopen.id%20%3D%20'open'%3B%0AminBar.id%20%3D%20'minBar'%3B%0Abs1.id%20%3D%20'btn1'%3B%0Abs2.id%20%3D%20'btn2'%3B%0Abs3.id%20%3D%20'btn3'%3B%0Abs4.id%20%3D%20'btn4'%3B%0Abs5.id%20%3D%20'btn5'%3B%0Abs6.id%20%3D%20'btn6'%3B%0Abs7.id%20%3D%20'btn7'%3B%0Abs8.id%20%3D%20'btn8'%3B%0Abs9.id%20%3D%20'btn9'%3B%0A%0Agt1.id%20%3D%20'gt1'%3B%0Agt2.id%20%3D%20'gt2'%3B%0Agt3.id%20%3D%20'gt3'%3B%0Agt4.id%20%3D%20'gt4'%3B%0Agt5.id%20%3D%20'gt5'%3B%0Agt6.id%20%3D%20'gt6'%3B%0A%0Adocument.body.appendChild(mainframe)%3B%0Adocument.body.appendChild(minBar)%3B%0Amainframe.append(topBar%2Ctitle%2Ctext%2Cbs1%2Cbs2%2Cbs3%2Cbs4%2Cbs5%2Cbs6%2Cbs7%2Cbs8)%3B%0Amainframe.append(style)%3B%0Amainframe.append(gameframe)%3B%0Agameframe.append(gt1%2Cgt2%2Cgt3%2Cgt4%2Cgt5%2Cgt6)%3B%0AtopBar.append(close)%3B%0AtopBar.append(min)%3B%0AtopBar.append(open)%3B%0A%0Atitle.textContent%20%3D%20'Luminesence'%3B%0Atext.textContent%20%3D%20'An%20advanced%20hacked%20client.'%3B%0Abs1.textContent%20%3D%20'Tab%20Cloak'%3B%0Abs2.textContent%20%3D%20'History'%3B%0Abs3.textContent%20%3D%20'Themes'%3B%0Abs4.textContent%20%3D%20'Darkmode'%3B%0Abs5.textContent%20%3D%20'Notepad'%3B%0Abs6.textContent%20%3D%20'Adblock%2B'%3B%0Abs7.textContent%20%3D%20'Games'%3B%0Abs8.textContent%20%3D%20'Console'%3B%0Abs9.textContent%20%3D%20'Autoclicker'%3B%0A%0Agt1.textContent%20%3D%20'Snake'%3B%0Agt2.textContent%20%3D%20'Pinball'%3B%0Agt3.textContent%20%3D%20'2048'%3B%0Agt4.textContent%20%3D%20'The%20House'%3B%0Agt5.textContent%20%3D%20'The%20Wall'%3B%0Agt6.textContent%20%3D%20'Astroids'%3B%0A%0Atitle.style.paddingTop%20%3D%20'10px'%3B%0A%0AdragElement(document.getElementById(%22mainClient%22))%3B%0A%0Afunction%20dragElement(elmnt)%20%7B%0A%20%20var%20pos1%20%3D%200%2C%20pos2%20%3D%200%2C%20pos3%20%3D%200%2C%20pos4%20%3D%200%3B%0A%20%20if%20(document.getElementById(elmnt.id%20%2B%20%22header%22))%20%7B%0A%20%20%20%20document.getElementById(elmnt.id%20%2B%20%22header%22).onmousedown%20%3D%20dragMouseDown%3B%0A%20%20%7D%20else%20%7B%0A%20%20%20%20elmnt.onmousedown%20%3D%20dragMouseDown%3B%0A%20%20%7D%0A%0A%20%20function%20dragMouseDown(e)%20%7B%0A%20%20%20%20e%20%3D%20e%20%7C%7C%20window.event%3B%0A%20%20%20%20e.preventDefault()%3B%0A%20%20%20%20pos3%20%3D%20e.clientX%3B%0A%20%20%20%20pos4%20%3D%20e.clientY%3B%0A%20%20%20%20document.onmouseup%20%3D%20closeDragElement%3B%0A%20%20%20%20document.onmousemove%20%3D%20elementDrag%3B%0A%20%20%7D%0A%0A%20%20function%20elementDrag(e)%20%7B%0A%20%20%20%20e%20%3D%20e%20%7C%7C%20window.event%3B%0A%20%20%20%20e.preventDefault()%3B%0A%20%20%20%20pos1%20%3D%20pos3%20-%20e.clientX%3B%0A%20%20%20%20pos2%20%3D%20pos4%20-%20e.clientY%3B%0A%20%20%20%20pos3%20%3D%20e.clientX%3B%0A%20%20%20%20pos4%20%3D%20e.clientY%3B%0A%20%20%20%20elmnt.style.top%20%3D%20(elmnt.offsetTop%20-%20pos2)%20%2B%20%22px%22%3B%0A%20%20%20%20elmnt.style.left%20%3D%20(elmnt.offsetLeft%20-%20pos1)%20%2B%20%22px%22%3B%0A%20%20%7D%0A%0A%20%20function%20closeDragElement()%20%7B%0A%20%20%20%20document.onmouseup%20%3D%20null%3B%0A%20%20%20%20document.onmousemove%20%3D%20null%3B%0A%20%20%7D%0A%7D%0A%0Aclose.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20mainframe.parentNode.removeChild(mainframe)%3B%0A%20%20%20%20minBar.parentNode.removeChild(minBar)%3B%0A%7D%0A%0AminBar.style.display%20%3D%20'none'%3B%0AminBar.innerHTML%20%3D%20'open'%3B%0Amin.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20mainframe.style.display%20%3D%20'none'%3B%0A%20%20%20%20minBar.style.display%20%3D%20'block'%3B%0A%7D%0A%0AminBar.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20mainframe.style.display%20%3D%20'block'%3B%0A%20%20%20%20minBar.style.display%20%3D%20'none'%3B%0A%7D%0A%0Aopen.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20if%20(mainframe.style.width%20%3D%3D%3D%20'100%25')%20%7B%0A%20%20%20%20%20%20%20%20mainframe.style.width%20%3D%20'800px'%0A%20%20%20%20%20%20%20%20mainframe.style.height%20%3D%20'600px'%0A%20%20%20%20%20%20%20%20mainframe.style.top%20%3D%20'2rem'%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20mainframe.style.width%20%3D%20'100%25'%3B%0A%20%20%20%20%20%20%20%20mainframe.style.height%20%3D%20'100%25'%3B%0A%20%20%20%20%20%20%20%20mainframe.style.top%20%3D%20'0'%3B%0A%20%20%20%20%20%20%20%20mainframe.style.left%20%3D%20'0'%3B%0A%20%20%20%20%7D%0A%7D%0A%0Abs1.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20text.style.display%20%3D%20''%3B%0A%20%20%20%20text.textContent%20%3D%20'Activated%20tab%20cloak'%3B%0A%20%20%20%20document.title%20%3D%20prompt(%22Name%20of%20tab%3A%22)%3B%0A%7D%0A%0Abs2.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20text.style.display%20%3D%20''%3B%0A%20%20%20%20text.textContent%20%3D%20'Activated%20Flood'%3B%0A%20%20%20%20javascript%3Avar%20num%3Dprompt('How%20Times%20Do%20You%20Want%20This%20Page%20To%20Show%20Up%20In%20your%20History%3F')%3Bdone%3Dfalse%3Bx%3Dwindow.location.href%3Bfor%20(var%20i%3D1%3B%20i%3C%3Dnum%3B%20i%2B%2B)%7Bhistory.pushState(0%2C%200%2C%20i%3D%3Dnum%3Fx%3Ai.toString())%3Bif(i%3D%3Dnum)%7Bdone%3Dtrue%7D%7Dif(done%3D%3D%3Dtrue)%7Balert('Flooding%20Successful!%5Cn%20'%2Bwindow.location.href%2B'%20%5CnIs%20Now%20In%20Your%20History%20'%2Bnum%2B(num%3D%3D1%3F'%20time.'%3A'%20Times.'))%7D%0A%7D%0A%0Abs3.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20text.style.display%20%3D%20''%3B%0A%20%20%20%20text.textContent%20%3D%20'Changed%20theme'%3B%0A%20%20%20%20const%20themeMap%20%3D%20%7B%0A%20%20%20%20%20%20%20%20dark%3A%20'light'%2C%0A%20%20%20%20%20%20%20%20light%3A%20'solar'%2C%0A%20%20%20%20%20%20%20%20solar%3A%20'dark'%0A%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20const%20theme%20%3D%20localStorage.getItem('theme')%0A%20%20%20%20%20%20%20%20%7C%7C%20(tmp%20%3D%20Object.keys(themeMap)%5B0%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20localStorage.setItem('theme'%2C%20tmp)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20tmp)%3B%0A%20%20%20%20%20%20const%20bodyClass%20%3D%20mainframe.classList%3B%0A%20%20%20%20%20%20bodyClass.add(theme)%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20function%20toggleTheme()%20%7B%0A%20%20%20%20%20%20%20%20const%20current%20%3D%20localStorage.getItem('theme')%3B%0A%20%20%20%20%20%20%20%20const%20next%20%3D%20themeMap%5Bcurrent%5D%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20bodyClass.replace(current%2C%20next)%3B%0A%20%20%20%20%20%20%20%20localStorage.setItem('theme'%2C%20next)%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20toggleTheme()%3B%20%20%0A%7D%0A%0Abs4.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3A(function()%7Bvar%20newSS%2C%20styles%3D'*%20%7B%20background%3A%20black%20!important%3B%20color%3A%20%23C0C0C0%20!important%3B%20line-height%3A1.7em%20!important%7D%20%3Alink%2C%20%3Alink%20*%20%7B%20color%3A%20%230099FF%20!important%20%7D%20%3Avisited%2C%20%3Avisited%20*%20%7B%20color%3A%20%236666CC%20!important%20%7D'%3B%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript%3A'%22%2Bstyles%2B%22'%22)%3B%20%7D%20else%20%7B%20newSS%3Ddocument.createElement('link')%3B%20newSS.rel%3D'stylesheet'%3B%20newSS.href%3D'data%3Atext%2Fcss%2C'%2Bescape(styles)%3B%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS)%3B%20%7D%20%7D)()%3B%0A%7D%0A%0Abs5.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20text.style.display%20%3D%20''%3B%0A%20%20%20%20text.textContent%20%3D%20'Opened%20notes'%0A%20%20%20%20javascript%3A(function()%7B%0A%20%20%20%20%20%20%20%20var%20parentID%20%3D%20'a3q_parent'%3B%0A%20%20%20%20%20%20%20%20var%20dID%20%3D%20'a3q_customNotes'%3B%0A%20%20%20%20%20%20%20%20var%20buttonID%20%3D%20'a3q_close_button'%3B%0A%20%20%20%20%20%20%20%20var%20saveThrottleSpeed%20%3D%20100%3B%0A%20%20%20%20%20%20%20%20var%20lastSave%20%3D%20Date.now()%3B%0A%20%20%20%20%20%20%20%20var%20waitCallback%3B%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20function%20a3q_Save(force)%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20force%20%3D%20force%20%7C%7C%20false%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20clearTimeout(%20waitCallback%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if(%20force%20%7C%7C%20Date.now()%20-%20lastSave%20%3E%3D%20saveThrottleSpeed%20)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lastSave%20%3D%20Date.now()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20localStorage.setItem(%20'a3q_note'%2C%20a3q_GetContents()%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20waitCallback%20%3D%20setTimeout(function()%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20a3q_Save()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%20saveThrottleSpeed%20-%20Date.now())%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20function%20a3q_Load()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20localStorage.getItem(%20'a3q_note'%20)%20%7C%7C%20''%3B%0A%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20function%20a3q_GetContents()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20document.getElementById(%20dID%20).innerHTML%3B%0A%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20function%20a3q_Unload()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20a3q_Save(%20true%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.removeEventListener(%20'onkeyup'%2C%20a3q_Save%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.parentNode.removeChild(%20d%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.removeEventListener(%20'onclick'%2C%20c.onclick%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.parentNode.removeChild(%20c%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.parentNode.removeChild(%20e%20)%3B%0A%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20var%20d%20%3D%20document.getElementById(%20dID%20)%3B%0A%20%20%20%20%20%20%20%20var%20c%20%3D%20document.getElementById(%20buttonID%20)%3B%0A%20%20%20%20%20%20%20%20if%20(%20d%20)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20a3q_Unload()%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20d%20%3D%20document.createElement(%20'div'%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.id%20%3D%20dID%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.innerHTML%20%3D%20a3q_Load()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.backgroundColor%20%3D%20'%23333'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.color%20%3D%20'%23ccc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.border%20%3D%20'1px%20solid%20%23ccc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.position%20%3D%20'fixed'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.width%20%3D%20'800px'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.height%20%3D%20'600px'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.left%20%3D%20'calc(50%25%20-%20400px)'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.top%20%3D%20'calc(50%25%20-%20300px)'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.padding%20%3D%20'5px'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.style.zIndex%20%3D%2010000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.contentEditable%20%3D%20true%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20document.body.appendChild(%20d%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20d.focus()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20lastRun%20%3D%20Date.now()%3B%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20d.onkeyup%20%3D%20a3q_Save%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20c%20%3D%20document.createElement(%20'button'%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.style.position%20%3D%20'fixed'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.id%20%3D%20buttonID%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.style.zIndex%20%3D%2010000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.style.top%20%3D%20'calc(50%25%20%2B%20300px)'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.style.left%20%3D%20'calc(50%25%20%2B%20350px)'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.innerHTML%20%3D%20'Close'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.style.backgroundColor%20%3D%20'%23333'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.style.color%20%3D%20'%23ccc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20c.onclick%20%3D%20function()%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20a3q_Unload()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20e%20%3D%20document.createElement('button')%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.style.position%20%3D%20'fixed'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.id%20%3D%20buttonID%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.style.zIndex%20%3D%2010000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.style.top%20%3D%20'calc(50%25%20%2B%20300px)'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.style.left%20%3D%20'calc(0%25%20%2B%2050px)'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.innerHTML%20%3D%20'Run'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.style.backgroundColor%20%3D%20'%23333'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.style.color%20%3D%20'%23ccc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20e.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20eval(d.innerText)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20document.body.appendChild(c)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20document.body.appendChild(e)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D)()%3B%0A%7D%0A%0Abs6.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript:(function()%7Bfunction%20R(w)%7Btry%7Bvar%20d%3Dw.document,j,i,t,T,N,b,r%3D1,C%3Bfor(j%3D0%3Bt%3D%5B%22object%22,%22embed%22,%22applet%22,%22iframe%22%5D%5Bj%5D%3B%2B%2Bj)%7BT%3Dd.getElementsByTagName(t)%3Bfor(i%3DT.length-1%3B(i%2B1)%26%26(N%3DT%5Bi%5D)%3B--i)if(j!%3D3%7C%7C!R((C%3DN.contentWindow)%3FC:N.contentDocument.defaultView))%7Bb%3Dd.createElement(%22div%22)%3Bb.style.width%3DN.width%3B%20b.style.height%3DN.height%3Bb.innerHTML%3D%22%3Cdel%3E%22%2B(j%3D%3D3%3F%22third-party%20%22%2Bt:t)%2B%22%3C/del%3E%22%3BN.parentNode.replaceChild(b,N)%3B%7D%7D%7Dcatch(E)%7Br%3D0%7Dreturn%20r%7DR(self)%3Bvar%20i,x%3Bfor(i%3D0%3Bx%3Dframes%5Bi%5D%3B%2B%2Bi)R(x)%7D)()%0A%7D%0A%0Agameframe.style.display%20%3D%20'none'%0Abs7.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20if%20(gameframe.style.display%20%3D%3D%3D%20'block')%20%7B%0A%20%20%20%20%20%20%20%20gameframe.style.display%20%3D%20'none'%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20gameframe.style.display%20%3D%20'block'%3B%0A%20%20%20%20%7D%0A%7D%0A%0Abs8.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20let%20stylething%20%3D%20document.createElement('style')%3B%0A%20%20document.head.appendChild(stylething)%3B%0A%20%20let%20mainCommand%20%3D%20document.createElement('div')%3B%0A%20%20mainCommand.id%20%3D%20'mainCommand'%3B%0A%20%20document.body.appendChild(mainCommand)%3B%0A%20%20mainCommand.appendChild(style)%3B%0A%20%20let%20goback%20%3D%20document.createElement('button')%3B%0A%20%20goback.id%20%3D%20'goback'%3B%0A%20%20let%20console%20%3D%20document.createElement('input')%3B%0A%20%20let%20box%20%3D%20document.createElement('div')%3B%0A%20%20console.id%20%3D%20'console'%3B%0A%20%20box.id%20%3D%20'box'%3B%0A%20%20mainCommand.appendChild(console)%3B%0A%20%20mainCommand.appendChild(box)%3B%0A%20%20console.placeholder%20%3D%20'Crwn%20help'%3B%0A%20%20goback.style.display%20%3D%20''%3B%0A%20%20goback.textContent%20%3D%20'Go%20back'%3B%0A%20%20mainCommand.appendChild(goback)%3B%0A%20%20goback.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20mainCommand.style.display%20%3D%20'none'%0A%20%20%7D%0A%20%20stylething.textContent%20%3D%20%60%0A%40import%20url('https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DOpen%2BSans%3Awght%40300%26display%3Dswap')%3B%0A%23console%20%7B%0A%20%20width%3A%20250px%20!important%3B%0A%20%20border-style%3A%20none%3B%0A%20%20height%3A%2050px%20!important%3B%0A%20%20background-color%3A%20black%3B%0A%20%20color%3A%20green%3B%0A%20%20font-family%3A%20'Open%20Sans'%3B%0A%20%20margin%3A%20auto%20auto%3B%0A%7D%0A%23console%3A%3Aplaceholder%20%7B%0A%20%20color%3A%20green%3B%0A%20%20font-family%3A%20'Open%20Sans'%3B%0A%7D%0A%23goback%20%7B%0Az-index%3A%20999999%20!important%3B%0A%7D%0A%23box%20%7B%0A%20%20color%3A%20green%3B%0A%20%20width%3A%20250px%20!important%20%3B%0A%20%20height%3A%20250px%20!important%3B%0A%20%20background-color%3A%20black%3B%0A%20%20margin%3A%20auto%20auto%3B%0A%20%20padding%3A%205px%3B%0A%20%20font-family%3A%20'Open%20Sans'%3B%0A%20%20border-style%3A%20none%3B%0A%20overflow-y%3A%20scroll%3B%20%0A%7D%0A%60%0A%20%20console.addEventListener('keyup'%2C%20function%20(event)%20%7B%0A%20%20%20%20if%20(event.keyCode%20%3D%3D%3D%2013)%20%7B%0A%20%20%20%20%20%20event.preventDefault()%3B%0A%20%20%20%20%20%20var%20extra%20%3D%20%22%22%3B%0A%20%20%20%20%20%20let%20output%20%3D%20document.createElement('p')%0A%20%20%20%20%20%20output.textContent%20%3D%20console.value%0A%20%20%20%20%20%20box.appendChild(output)%0A%20%20%20%20%20%20if%20(console.value.includes('crwn'))%20%7B%0A%20%20%20%20%20%20%20%20output.value%20%3D%20console.value%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Unknown%20command%20~%20'%20%2B%20console.value%20%2B%20'~'%0A%20%20%20%20%20%20%20%20output.style.color%20%3D%20'red'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20if%20(console.value%20%3D%3D%20'crwn%20console%20blue')%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Changed%20console%20theme%20to%20blue'%0A%20%20%20%20%20%20%20%20box.style.backgroundColor%20%3D%20'blue'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20console%20green')%20%7B%0A%20%20%20%20%20%20%20%20output.value%20%3D%20console.value%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Changed%20console%20theme%20to%20green'%0A%20%20%20%20%20%20%20%20box.style.backgroundColor%20%3D%20'green'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20custom%20theme')%20%7B%0A%20%20%20%20%20%20%20%20let%20bozo%20%3D%20prompt('Enter%20Image%20URL')%0A%20%20%20%20%20%20%20%20output.value%20%3D%20console.value%0A%20%20%20%20%20%20%20%20document.body.style.backgroundImage%20%3D%20'url('%20%2B%20bozo%20%2B%20')'%3B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Added%20custom%20theme%20to%20page'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20new')%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20%22if%20(console.value%20%3D%3D%20~command-%20name-here~%20%7B%20code%20here%20%7D%20else%20%7Boutput.textContent%20~Unknown%20command~%20'%20%2B%20console.value%20%2B%20'''%20output.style.color%20%3D%20'red'%7D%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20edit')%20%7B%0A%20%20%20%20%20%20%20%20javascript%3A%20document.body.contentEditable%20%3D%20true%3B%20document.designMode%20%3D%20'on'%3B%20void%200%3B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Edit%20Mode%20turned%20on.'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20create%20cmd')%20%7B%0A%20%20%20%20%20%20%20%20let%20name%20%3D%20prompt('Name%20your%20command')%0A%20%20%20%20%20%20%20%20let%20prefix%20%3D%20'crwn'%0A%20%20%20%20%20%20%20%20let%20func%20%3D%20prompt('Paste%20your%20JS%20code.%20Do%20crwn%20new%20for%20the%20basic%20command%20creation%20guide.')%0A%20%20%20%20%20%20%20%20let%20store%20%3D%20prefix%20%2B%20'%20'%20%2B%20name%0A%20%20%20%20%20%20%20%20extra%20%3D%20store%3B%0A%20%20%20%20%20%20%20%20eval(func)%3B%0A%20%20%20%20%20%20%20%20window.localStorage.setItem('store'%2C%20store.toString())%3B%0A%20%20%20%20%20%20%20%20window.localStorage.setItem('func'%2C%20func.toString())%3B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Executed%20'%20%2B%20store%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20proxify%20site')%20%7B%0A%20%20%20%20%20%20%20%20let%20proxify%20%3D%20prompt('Enter%20site%20URL')%0A%20%20%20%20%20%20%20%20var%20code2%20%3D%20'%20width%3D100%25%20height%3D100%25%3E'%3B%20var%20proxyDomain%20%3D%20'https%3A%2F%2Fpalladium-2.anirudhiscool.repl.co%2Fservice%2Fgateway%2F%3Furl%3D'%3B%20var%20codeIP1%20%3D%20code1.concat(proxyDomain)%3B%20var%20codeIP2%20%3D%20codeIP1.concat(proxify)%3B%20var%20codeIP3%20%3D%20codeIP2.concat(code2)%3B%20document.write(codeIP3)%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20install%20pall')%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Downloaded%20palladium%20proxy.%20Using%20repl.co%20domain.'%0A%20%20%20%20%20%20%20%20let%20proxyDomain%20%3D%20'https%3A%2F%2Fpalladium-2.anirudhiscool.repl.co%2Fservice%2Fgateway%2F%3Furl%3D'%3B%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%203d')%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'3D%20ifyed!'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20delete%20css')%20%7B%0A%20%20%20%20%20%20%20%20mainframe.style.display%20%3D%20'none'%0A%20%20%20%20%20%20%20%20javascript%3A(function()%7Bvar%20i%2Cl%2Cstyles%20%3D%20document.styleSheets%3Bfor(i%3D0%2Cl%3Dstyles.length%3Bi%3Cl%3Bi%2B%2B)%7Bstyles%5Bi%5D.disabled%20%3D%20true%3B%7D%7D)()%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20calc')%20%7B%0A%20%20%20%20%20%20%20%20javascript%3Aeval('function%20calc()%7B_o%3Dprompt(_t%2C_z)%3Bif(_o!%3D%5C'%5C'%26%26_o!%3Dnull%26%26_o.toUpperCase()%3D%3D_o.toLowerCase())_z%3Deval(_o)%3B%7D')%3B_t%3D'JAVASCRIPTER.NET%20Calculator%20-%20Input%20the%20expression%20to%20be%20calculated%3A'%3B_z%3D''%3Bcalc()%3Bwhile(_o!%3D''%26%26_o!%3Dnull%26%26_o.toUpperCase()%3D%3D_o.toLowerCase())calc()%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20help')%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20%60Put%20crwn%20infront%20of%20any%20command%3A%20console%20green%2Fblue%2C%20custom%20theme%20-%20makes%20custom%20theme%2C%20new%2C%20edit%2C%20create%20cmd%2C%20proxify%20site%2C%20install%20pall%2C%20clear%20cookies%2C%20delete%20css%2C%20calc%2C%203d%2C%20about%3Ablank%2C%20%24%7BlocalStorage.getItem('store')%7D%60%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20clear%20cookies')%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Cookies%20cleared!'%0A%20%20%20%20%20%20%20%20javascript%3A(function()%7Bdocument.cookie.split(%22%3B%22).forEach(function(c)%20%7B%20document.cookie%20%3D%20c.replace(%2F%5E%20%2B%2F%2C%20%22%22).replace(%2F%3D.*%2F%2C%20%22%3D%3Bexpires%3D%22%20%2B%20new%20Date().toUTCString()%20%2B%20%22%3Bpath%3D%2F%22)%3B%20%7D)%3B%20%7D)()%3B%0A%20%20%20%20%20%20%20%20window.localStorage.clear()%3B%0A%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20'crwn%20about%3Ablank')%20%7B%0A%20%20%20%20%20%20%20%20location.href%20%3D%20'https%3A%2F%2F'%20%2B%20prompt(%22Link%20adress%3A%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20%20%20else%20if%20(console.value%20%3D%3D%20localStorage.getItem('store'))%20%7B%0A%20%20%20%20%20%20%20%20eval(window.localStorage.getItem('func'))%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20output.textContent%20%3D%20'Unknown%20command%20%20'%20%2B%20console.value%20%2B%20''%0A%20%20%20%20%20%20%20%20output.style.color%20%3D%20'red'%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D)%3B%0A%7D%0A%0Abs9.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3Avar%20DELAY%20%3D%201%3Bvar%20autoClickerStyleElement%20%3D%20document.createElement(%22style%22)%3BautoClickerStyleElement.innerHTML%3D%22*%7Bcursor%3A%20crosshair%20!important%3B%7D%22%3Bdocument.body.appendChild(autoClickerStyleElement)%3Bfunction%20addClicker(e)%20%7Bif(!e.isTrusted)%20%7Breturn%3B%7Dif(e.target.classList.contains(%22auto-clicker-target%22))%20%7Be.target.classList.remove(%22auto-clicker-target%22)%3B%7D%20else%20%7Be.target.classList.add(%22auto-clicker-target%22)%3B%7Ddocument.body.removeChild(autoClickerStyleElement)%3Bdocument.body.removeEventListener(%22click%22%2C%20addClicker)%3Be.preventDefault()%3BautoClick(e.target)%3B%7Dfunction%20autoClick(element)%20%7Bif(element.classList.contains(%22auto-clicker-target%22))%20%7Belement.click()%3BsetTimeout(function()%7B%20autoClick(element)%3B%20%7D%2C%20DELAY)%3B%7D%7Ddocument.body.addEventListener(%22click%22%2C%20addClicker%2C%200)%3B%0A%7D%0A%0Agt1.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3AQ%3D64%3Bm%3Db%3DQ*Q%3Ba%3D%5BP%3Dl%3Du%3Dd%3Dp%3DS%3Dw%3D0%5D%3Bu%3D89%3Bf%3D(h%3Dj%3Dt%3D(b%2BQ)%2F2)-1%3B(B%3D(D%3Ddocument).body).appendChild(x%3DD.createElement('p'))%3B(X%3Dx.style).position%3D'fixed'%3BX.left%3DX.top%3D0%3BX.background%3D'%23FFF'%3Bx.innerHTML%3D'%3Cp%3E%3C%2Fp%3E%3Ccanvas%3E'%3Bv%3D(s%3Dx.childNodes)%5B0%5D%3B(s%3Ds%5B1%5D).width%3Ds.height%3D5*Q%3Bc%3Ds.getContext('2d')%3B%20onkeydown%3Donblur%3DF%3Dfunction(e%2Cg)%7Bg%3Fa%5Bf%5D%3F(w%2B%3Dm%2Cf%3DMath.random(l%2B%3D8)*(R%3DQ-2)*R%7C(u%3D0)%2CF(f%2B%3DQ%2B1%2B2*(f%2FR%7C0)%2Cg))%3AF(f)%3A0%3Ee%3F(l%3F--l%3A(y%3Dt%2Ct%3Da%5Bt%5D-2%2CF(y))%2CS%2B%3D(w*%3D0.8)%2F4%2Cm%3D999%2F(u%2B%2B%20%2B10)%2Ca%5Bh%2B%3D%5B-1%2C-Q%2C1%2CQ%5D%5Bd%3Dp%5D%5D%3FB.removeChild(x%2Calert('Game%20Over'))%3A(F(h)%2CF(e%2Cj%3Dh)%2Cv.innerHTML%3DP%3F(setTimeout(F%2C50%2Ce%2C0)%2CS%7C0)%3A'Press%20P'))%3A-e%3F(y%3D(a%5Be%5D%3De%3CQ%7Ce%3E%3DQ*Q-Q%7C!(e%25Q)%7Ce%25Q%3D%3DQ-1%7C2*(e%3D%3Dh))%2B(e%3D%3Df)%2Ce%3D%3Dh%26%26(a%5Bj%5D%3D2%2Bh)%2Cc.fillStyle%3D'hsl('%2B99*!a%5Be%5D%2B'%2C'%2B2*m%2B'%25%2C'%2B50*y%2B'%25)'%2Cc.fillRect(e%25Q*5%2C5*(e%2FQ%7C0)%2C5%2C5))%3AisNaN(y%3De.keyCode-37)%7C43%3D%3Dy%3F(P%3Dy%26%26!P)%26%26F(-1)%3A%20p%3D!P%7Cy%26-4%7C!(y%5E2%5Ed)%3Fp%3Ay%3Breturn!1%7D%3Bfor(%3B--b%3BF(b))%3Bvoid%20F(-1)%3B%0A%7D%0A%0Agt2.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3A(function()%7Bvar%20js%3Ddocument.body.appendChild(document.createElement(%22script%22))%3Bjs.onerror%3Dfunction()%7Balert(%22Sorry%2C%20the%20script%20could%20not%20be%20loaded.%22)%7D%3Bjs.src%3D%22https%3A%2F%2Frawgit.com%2FKrazete%2Fbookmarklets%2Fmaster%2Flupire.js%22%7D)()%3B%0A%7D%0A%0Agt3.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3A(t%3D%3E%7Bvar%20s%3Ddocument.createElement(t)%3Bs.type%3D'text%2Fjava'%2Bt%3Bs.src%3D'https%3A%2F%2Fsheeptester.github.io%2Fjavascripts%2F2048.js'%3Bdocument.body.appendChild(s)%3B%7D)('script')%3B%0A%7D%0A%0Agt4.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3Avar%20s%3Ddocument.createElement('script')%3Bs.type%3D'text%2Fjavascript'%3Bs.src%3D'https%3A%2F%2Fsheeptester.github.io%2Fthingkingland%2Fbookmarklets%2FtheHouse.js'%3Bdocument.body.appendChild(s)%3B%0A%7D%0A%0Agt5.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3At%3Ddocument.title%3Bdocument.title%3D%22Loading...%22%3Br%3Dnew%20XMLHttpRequest()%3Br.onload%3Dfunction(e)%7Beval(e.currentTarget.responseText)%7D%3Br.open(%22GET%22%2C%22https%3A%2F%2Fplainsightcollection.github.io%2Fweb%2Fwallball%2Fldr.js%22%2Ctrue)%3Br.send()%3Bundefined%3B%0A%7D%0A%0Agt6.onclick%20%3D%20()%20%3D%3E%20%7B%0A%20%20%20%20javascript%3Avar%20s%3Ddocument.createElement('script')%3Bs.type%3D'text%2Fjavascript'%3Bs.onerror%3Dfunction(e)%7Balert('Failed%20to%20load%20the%20script.%20The%20site%5C's%20Content%20Security%20Policy%20might%20be%20blocking%20it.%20Feel%20free%20to%20try%20again.')%3B%7D%3Bdocument.body.appendChild(s)%3Bs.src%3D'https%3A%2F%2Fblog.roysolberg.com%2Fjs%2Fdom2.min.js'%3Bvoid(0)%3B%0A%7D%0A%0Astyle.textContent%20%3D%20%60%0A%3Aroot%20%7B%0A%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20font-family%3A%20'Open%20Sans'%3B%0A%20%20%20%20--text-primary%3A%20%23fff%3B%0A%20%20%20%20--text-secondary%3A%20%23E7E7E7%3B%0A%20%20%20%20--bg-primary%3A%20linear-gradient(143deg%2C%20rgba(2%2C0%2C36%2C1)%200%25%2C%20rgba(67%2C124%2C208%2C1)%200%25%2C%20rgba(73%2C224%2C255%2C1)%20100%25)%3B%0A%20%20%20%20--bg-secondary%3A%20lightblue%3B%0A%20%20%20%20--transition-speed%3A%20600ms%3B%0A%20%20%7D%0A.dark%20%7B%0A%20%20%20%20--text-primary%3A%20%23fff%3B%0A%20%20%20%20--text-secondary%3A%20%23ececec%3B%0A%20%20%20%20--bg-primary%3A%20linear-gradient(180deg%2C%20rgba(40%2C40%2C40%2C1)%2048%25%2C%20rgba(0%2C0%2C0%2C1)%2096%25)%3B%0A%20%20%20%20--bg-secondary%3A%20%23141418%3B%0A%20%20%20%20background-color%3A%20%231f2223%3B%0A%20%20%7D%0A%20%20%0A%20%20.light%20%7B%0A%20%20%20%20--text-primary%3A%20%23fff%3B%0A%20%20%20%20--text-secondary%3A%20%23E7E7E7%3B%0A%20%20%20%20--bg-primary%3A%20linear-gradient(143deg%2C%20rgba(2%2C0%2C36%2C1)%200%25%2C%20rgba(67%2C124%2C208%2C1)%200%25%2C%20rgba(73%2C224%2C255%2C1)%20100%25)%3B%0A%20%20%20%20--bg-secondary%3A%20lightblue%3B%0A%20%20%20%20background%3A%20linear-gradient(143deg%2C%20rgba(2%2C0%2C36%2C1)%200%25%2C%20rgba(67%2C124%2C208%2C1)%200%25%2C%20rgba(73%2C224%2C255%2C1)%20100%25)%3B%0A%20%20%7D%0A%20%20%0A%20%20.solar%20%7B%0A%20%20%20%20--text-primary%3A%20%23fff%3B%0A%20%20%20%20--text-secondary%3A%20%2335535c%3B%0A%20%20%20%20--bg-primary%3A%20linear-gradient(180deg%2C%20rgba(247%2C247%2C247%2C0.8043811274509804)%200%25%2C%20rgba(139%2C214%2C110%2C1)%200%25%2C%20rgba(29%2C128%2C8%2C1)%20100%25)%3B%0A%20%20%20%20--bg-secondary%3A%20%23fefefe%3B%0A%20%20%20%20color%3A%20black%3B%0A%20%20%7D%0A%23close%20%7B%0A%20%20%20%20background%3A%20%23FF5D5B%3B%0A%20%20%20%20border%3A%204px%20solid%20%23CF544D%3B%0A%20%20%20%20border-radius%3A%20100%25%3B%0A%20%20%20%20max-height%3A%2010px%3B%0A%20%20%20%20right%3A%2045px%3B%0A%20%20%20%20padding%3A%203px%3B%0A%20%20%20%20position%3A%20absolute%3B%0A%7D%0A%23close%20%3Abefore%2C%20%23close%20%3Aafter%20%7B%0A%20%20%20%20background%3A%20%23460100%3B%0A%7D%0A%23min%20%7B%0A%20%20%20%20background%3A%20%23FFBB39%3B%0A%20%20%20%20border%3A%204px%20solid%20%23CFA64F%3B%0A%20%20%20%20border-radius%3A%20100%25%3B%0A%20%20%20%20max-height%3A%2010px%3B%0A%20%20%20%20right%3A%2025px%3B%0A%20%20%20%20padding%3A%203px%3B%0A%20%20%20%20position%3A%20absolute%3B%0A%7D%0A%23min%20%3Abefore%2C%20%23min%20%3Aafter%20%7B%0A%20%20%20%20background%3A%20%23460100%3B%0A%7D%0A%23open%20%7B%0A%20%20%20%20background%3A%20%2300CD4F%3B%0A%20%20%20%20border%3A%204px%20solid%20%230EA642%3B%0A%20%20%20%20border-radius%3A%20100%25%3B%0A%20%20%20%20max-height%3A%2010px%3B%0A%20%20%20%20right%3A%205px%3B%0A%20%20%20%20padding%3A%203px%3B%0A%20%20%20%20position%3A%20absolute%3B%0A%7D%0A%23open%20%3Abefore%2C%20%23open%20%3Aafter%20%7B%0A%20%20%20%20background%3A%20%23024D0F%3B%0A%7D%0A%23gameFrame%20%7B%0A%20%20%20%20width%3A%20736px%3B%0A%20%20%20%20height%3A%20fit-content%3B%0A%20%20%20%20position%3A%20absolute%3B%0A%0A%7D%0A%23topBar%20%7B%0A%20%20%20%20top%3A%2015px%3B%0A%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20background%3A%20linear-gradient(90deg%2C%20rgba(247%2C247%2C247%2C0.8043811274509804)%200%25%2C%20rgba(237%2C237%2C237%2C0.7539609593837535)%2044%25%2C%20rgba(210%2C210%2C210%2C0.7007396708683473)%20100%25)%3B%20%20%20%20%0A%20%20%20%20width%3A%20736px%3B%0A%20%20%20%20z-index%3A%20100002%3B%0A%20%20%20%20height%3A%2015px%3B%0A%20%20%20%20cursor%3A%20move%3B%0A%20%20%20%20border-radius%3A%2015px%3B%0A%20%20%20%20margin%3A%20auto%3B%0A%20%20%20%20margin-bottom%3A%201rem%3B%0A%20%20%20%20box-shadow%3A%20rgba(149%2C%20157%2C%20165%2C%200.2)%200px%208px%2024px%3B%0A%7D%0A%23minBar%20%7B%0A%20%20%20%20bottom%3A%20-5px%3B%0A%20%20%20%20left%3A%2050px%3B%0A%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20width%3A%20250px%3B%0A%20%20%20%20height%3A%2025px%3B%0A%20%20%20%20box-shadow%3A%20rgba(60%2C%2064%2C%2067%2C%200.3)%200px%201px%202px%200px%2C%20rgba(60%2C%2064%2C%2067%2C%200.15)%200px%202px%206px%202px%3B%0A%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20z-index%3A%2020%3B%0A%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20font-family%3A%20Inter%2C-apple-system%2Csystem-ui%2C'Segoe%20UI'%2CHelvetica%2CArial%2Csans-serif%3B%0A%20%20%20%20background%3A%20rgb(247%2C247%2C247)%3B%0A%20%20%20%20background%3A%20linear-gradient(90deg%2C%20rgba(247%2C247%2C247%2C0.8043811274509804)%200%25%2C%20rgba(237%2C237%2C237%2C0.7539609593837535)%2044%25%2C%20rgba(210%2C210%2C210%2C0.7007396708683473)%20100%25)%3B%0A%20%20%20%20animation-name%3A%20slidein%3B%0A%20%20%20%20animation-duration%3A%201s%3B%0A%7D%0Ap%2C%20h1%20%7B%0A%20%20%20%20color%3A%20var(--text-primary)%3B%0A%7D%0A%23mainClient%20%7B%0A%20%20%20%20background%3A%20var(--bg-primary)%3B%0A%20%20%20%20width%3A%20800px%3B%0A%20%20%20%20height%3A%20600px%3B%0A%20%20%20%20border-radius%3A%2010px%3B%0A%20%20%20%20animation-name%3A%20slidein%3B%0A%20%20%20%20animation-duration%3A%202s%3B%0A%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20margin%3A%20auto%20auto%3B%0A%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20overflow%3A%20auto%3B%0A%20%20%20%20left%3A%20var(--x-axis%2C%202rem)%3B%0A%20%20%20%20top%3A%20var(--y-axis%2C%202rem)%3B%0A%20%20%20%20z-index%3A%2010000%3B%20%0A%20%20%20%20box-shadow%3A%205px%2010px%2018px%20%23888888%3B%0A%20%20%20%20padding-left%3A%202rem%3B%0A%20%20%20%20padding-right%3A%202rem%3B%0A%20%20%20%20padding-top%3A%2010px%3B%0A%20%20%20%20font-family%3A%20Inter%2C-apple-system%2Csystem-ui%2C'Segoe%20UI'%2CHelvetica%2CArial%2Csans-serif%20!important%3B%0A%20%20%20%20color%3A%20var(--text-primary)%20!important%3B%0A%20%20%7D%0A%20%20%23mainCommand%20%7B%0A%20%20%20%20background%3A%20black%3B%0A%20%20%20%20width%3A%20800px%3B%0A%20%20%20%20height%3A%20600px%3B%0A%20%20%20%20border-radius%3A%2010px%3B%0A%20%20%20%20animation-name%3A%20slidein%3B%0A%20%20%20%20animation-duration%3A%202s%3B%0A%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20margin%3A%20auto%20auto%3B%0A%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20overflow%3A%20auto%3B%0A%20%20%20%20top%3A%20var(--x-axis%2C%202rem)%3B%0A%20%20%20%20left%3A%20var(--y-axis%2C%202rem)%3B%0A%20%20%20%20z-index%3A%20100000%3B%20%0A%20%20%20%20box-shadow%3A%205px%2010px%2018px%20%23888888%3B%0A%20%20%20%20padding-left%3A%202rem%3B%0A%20%20%20%20padding-right%3A%202rem%3B%0A%20%20%7D%0A%20%20%23title%2C%20%23author%20%7B%0A%20%20%20%20color%3A%20var(--text-primary)%3B%0A%20%20%20%20font-family%3A%20'Helvetica'%3B%0A%20%20%20%20padding%3A%2010px%3B%0A%20%20%7D%0A%20%20%23btn1%2C%20%23btn2%2C%20%23btn3%2C%20%23btn4%2C%20%23btn5%2C%20%23btn6%2C%20%23btn7%2C%20%23btn8%2C%20%23btn9%2C%20%23btn10%2C%20%23gt1%2C%20%23gt2%2C%20%23gt3%2C%20%23gt4%2C%20%23gt5%2C%20%23gt6%20%7B%0A%20%20%20%20appearance%3A%20none%3B%0A%20%20%20%20backface-visibility%3A%20hidden%3B%0A%20%20%20%20background-color%3A%20%23F82C79%3B%0A%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20border-style%3A%20none%3B%0A%20%20%20%20box-shadow%3A%20rgba(39%2C%20174%2C%2096%2C%20.15)%200%204px%209px%3B%0A%20%20%20%20box-sizing%3A%20border-box%3B%0A%20%20%20%20color%3A%20%23fff%3B%0A%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20margin%3A%20auto%20auto%3B%0A%20%20%20%20font-family%3A%20Inter%2C-apple-system%2Csystem-ui%2C'Segoe%20UI'%2CHelvetica%2CArial%2Csans-serif%3B%0A%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20letter-spacing%3A%20normal%3B%0A%20%20%20%20line-height%3A%201.5%3B%0A%20%20%20%20outline%3A%20none%3B%0A%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20padding%3A%2013px%2020px%3B%0A%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20text-decoration%3A%20none%3B%0A%20%20%20%20transform%3A%20translate3d(0%2C%200%2C%200)%3B%0A%20%20%20%20transition%3A%20all%20.3s%3B%0A%20%20%20%20user-select%3A%20none%3B%0A%20%20%20%20-webkit-user-select%3A%20none%3B%0A%20%20%20%20touch-action%3A%20manipulation%3B%0A%20%20%20%20vertical-align%3A%20top%3B%0A%20%20%20%20white-space%3A%20nowrap%3B%0A%20%20%20%20margin-right%3A%205px%3B%0A%20%20%20%20margin-top%3A%205px%3B%0A%20%20%7D%0A%20%20%20%20%23btn1%3Ahover%2C%23btn2%3Ahover%2C%23btn1%3Ahover%2C%20%23btn3%3Ahover%2C%20%23btn4%3Ahover%2C%20%23btn5%3Ahover%2C%20%23btn6%3Ahover%2C%20%23btn7%3Ahover%2C%20%23btn8%3Ahover%2C%20%23btn9%3Ahover%2C%20%23btn10%3Ahover%2C%20%23gt1%3Ahover%2C%20%23gt2%3Ahover%2C%20%23gt3%3Ahover%2C%20%23gt4%3Ahover%2C%20%23gt5%3Ahover%2C%20%23gt6%3Ahover%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23E52A70%3B%0A%20%20%20%20%20%20opacity%3A%201%3B%0A%20%20%20%20%20%20transform%3A%20translateY(0)%3B%0A%20%20%20%20%20%20transition-duration%3A%20.35s%3B%0A%20%20%20%20%7D%0A%20%20%20%20%23btn1%3Aactive%2C%20%23btn2%3Aactive%2C%20%23btn3%3Aactive%2C%20%23btn4%3Aactive%2C%20%23btn5%3Aactive%2C%20%23btn6%3Aactive%2C%20%23btn7%3Aactive%2C%20%23btn8%3Aactive%2C%20%23btn9%3Aactive%2C%20%23btn10%3Aactive%2C%20%23gt1%3Aactive%2C%20%23gt2%3Aactive%2C%20%23gt3%3Aactive%2C%20%23gt4%3Aactive%2C%20%23gt5%3Aactive%2C%20%23gt6%3Aactive%20%7B%0A%20%20%20%20%20%20transform%3A%20translateY(2px)%3B%0A%20%20%20%20%20%20transition-duration%3A%20.35s%3B%0A%20%20%20%20%7D%0A%20%20%20%20%40keyframes%20slidein%20%7B%0A%20%20%20%20%20%200%25%20%7B%0A%20%20%20%20%20%20%20%20opacity%3A%200%25%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20100%25%20%7B%0A%20%20%20%20%20%20%20%20opactiy%3A%20100%25%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%60%7D)()%3B
+javascript:(function()let style = document.createElement('style');
+let title = document.createElement('h1');
+let text = document.createElement('p');
+let mainframe = document.createElement('div');
+let gameframe = document.createElement('div');
+let logo = document.createElement('img');
+let topBar = document.createElement('div');
+let minBar = document.createElement('div');
+
+let close = document.createElement('button');
+let min = document.createElement('button');
+let open = document.createElement('button');
+let bs1 = document.createElement('button');
+let bs2 = document.createElement('button');
+let bs3 = document.createElement('button');
+let bs4 = document.createElement('button');
+let bs5 = document.createElement('button');
+let bs6 = document.createElement('button');
+let bs7 = document.createElement('button');
+let bs8 = document.createElement('button');
+let bs9 = document.createElement('button');
+
+let gt1 = document.createElement('button');
+let gt2 = document.createElement('button');
+let gt3 = document.createElement('button');
+let gt4 = document.createElement('button');
+let gt5 = document.createElement('button');
+let gt6 = document.createElement('button');
+
+mainframe.id = 'mainClient';
+gameframe.id = 'gameFrame';
+topBar.id = 'topBar';
+close.id = 'close';
+min.id = 'min';
+open.id = 'open';
+minBar.id = 'minBar';
+bs1.id = 'btn1';
+bs2.id = 'btn2';
+bs3.id = 'btn3';
+bs4.id = 'btn4';
+bs5.id = 'btn5';
+bs6.id = 'btn6';
+bs7.id = 'btn7';
+bs8.id = 'btn8';
+bs9.id = 'btn9';
+
+gt1.id = 'gt1';
+gt2.id = 'gt2';
+gt3.id = 'gt3';
+gt4.id = 'gt4';
+gt5.id = 'gt5';
+gt6.id = 'gt6';
+gt7.id = 'gt7';
+
+document.body.appendChild(mainframe);
+document.body.appendChild(minBar);
+mainframe.append(topBar,title,text,bs1,bs2,bs3,bs4,bs5,bs6,bs7,bs8);
+mainframe.append(style);
+mainframe.append(gameframe);
+gameframe.append(gt1,gt2,gt3,gt4,gt5,gt6);
+topBar.append(close);
+topBar.append(min);
+topBar.append(open);
+
+title.textContent = 'Luminesence';
+text.textContent = 'An advanced hacked client.';
+bs1.textContent = 'Tab Cloak';
+bs2.textContent = 'History';
+bs3.textContent = 'Themes';
+bs4.textContent = 'Darkmode';
+bs5.textContent = 'Notepad';
+bs6.textContent = 'Adblock+';
+bs7.textContent = 'Games';
+bs8.textContent = 'Console';
+bs9.textContent = 'Autoclicker';
+
+gt1.textContent = 'Snake';
+gt2.textContent = 'Pinball';
+gt3.textContent = '2048';
+gt4.textContent = 'The House';
+gt5.textContent = 'The Wall';
+gt6.textContent = 'Astroids';
+gt7.textContent = 'Roblox';
+
+title.style.paddingTop = '10px';
+
+dragElement(document.getElementById("mainClient"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+close.onclick = () => {
+    mainframe.parentNode.removeChild(mainframe);
+    minBar.parentNode.removeChild(minBar);
+}
+
+minBar.style.display = 'none';
+minBar.innerHTML = 'open';
+min.onclick = () => {
+    mainframe.style.display = 'none';
+    minBar.style.display = 'block';
+}
+
+minBar.onclick = () => {
+    mainframe.style.display = 'block';
+    minBar.style.display = 'none';
+}
+
+open.onclick = () => {
+    if (mainframe.style.width === '100%') {
+        mainframe.style.width = '800px'
+        mainframe.style.height = '600px'
+        mainframe.style.top = '2rem'
+    } else {
+        mainframe.style.width = '100%';
+        mainframe.style.height = '100%';
+        mainframe.style.top = '0';
+        mainframe.style.left = '0';
+    }
+}
+
+bs1.onclick = () => {
+    text.style.display = '';
+    text.textContent = 'Activated tab cloak';
+    document.title = prompt("Name of tab:");
+}
+
+bs2.onclick = () => {
+    text.style.display = '';
+    text.textContent = 'Activated Flood';
+    javascript:var num=prompt('How Times Do You Want This Page To Show Up In your History?');done=false;x=window.location.href;for (var i=1; i<=num; i++){history.pushState(0, 0, i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert('Flooding Successful!\n '+window.location.href+' \nIs Now In Your History '+num+(num==1?' time.':' Times.'))}
+}
+
+bs3.onclick = () => {
+    text.style.display = '';
+    text.textContent = 'Changed theme';
+    const themeMap = {
+        dark: 'light',
+        light: 'solar',
+        solar: 'dark'
+      };
+      
+      const theme = localStorage.getItem('theme')
+        || (tmp = Object.keys(themeMap)[0],
+            localStorage.setItem('theme', tmp),
+            tmp);
+      const bodyClass = mainframe.classList;
+      bodyClass.add(theme);
+      
+      function toggleTheme() {
+        const current = localStorage.getItem('theme');
+        const next = themeMap[current];
+      
+        bodyClass.replace(current, next);
+        localStorage.setItem('theme', next);
+      }
+      
+      toggleTheme();  
+}
+
+bs4.onclick = () => {
+    javascript:(function(){var newSS, styles='* { background: black !important; color: #C0C0C0 !important; line-height:1.7em !important} :link, :link * { color: #0099FF !important } :visited, :visited * { color: #6666CC !important }'; if(document.createStyleSheet) { document.createStyleSheet("javascript:'"+styles+"'"); } else { newSS=document.createElement('link'); newSS.rel='stylesheet'; newSS.href='data:text/css,'+escape(styles); document.getElementsByTagName("head")[0].appendChild(newSS); } })();
+}
+
+bs5.onclick = () => {
+    text.style.display = '';
+    text.textContent = 'Opened notes'
+    javascript:(function(){
+        var parentID = 'a3q_parent';
+        var dID = 'a3q_customNotes';
+        var buttonID = 'a3q_close_button';
+        var saveThrottleSpeed = 100;
+        var lastSave = Date.now();
+        var waitCallback;
+    
+        function a3q_Save(force){
+            force = force || false;
+            clearTimeout( waitCallback );
+            if( force || Date.now() - lastSave >= saveThrottleSpeed ) {
+                lastSave = Date.now();
+                localStorage.setItem( 'a3q_note', a3q_GetContents() );
+            } else {
+                waitCallback = setTimeout(function(){
+                    a3q_Save();
+                }, saveThrottleSpeed - Date.now());
+            }
+        };
+    
+        function a3q_Load() {
+            return localStorage.getItem( 'a3q_note' ) || '';
+        };
+    
+        function a3q_GetContents() {
+            return document.getElementById( dID ).innerHTML;
+        };
+    
+        function a3q_Unload() {
+            a3q_Save( true );
+            d.removeEventListener( 'onkeyup', a3q_Save );
+            d.parentNode.removeChild( d );
+            c.removeEventListener( 'onclick', c.onclick );
+            c.parentNode.removeChild( c );
+            e.parentNode.removeChild( e );
+        };
+    
+        var d = document.getElementById( dID );
+        var c = document.getElementById( buttonID );
+        if ( d ) {
+            a3q_Unload();
+        } else {
+            var d = document.createElement( 'div' );
+            d.id = dID;
+            d.innerHTML = a3q_Load();
+            d.style.backgroundColor = '#333';
+            d.style.color = '#ccc';
+            d.style.border = '1px solid #ccc';
+            d.style.position = 'fixed';
+            d.style.width = '800px';
+            d.style.height = '600px';
+            d.style.left = 'calc(50% - 400px)';
+            d.style.top = 'calc(50% - 300px)';
+            d.style.padding = '5px';
+            d.style.zIndex = 10000;
+            d.contentEditable = true;
+            document.body.appendChild( d );
+            d.focus();
+            var lastRun = Date.now();
+    
+            d.onkeyup = a3q_Save;
+            var c = document.createElement( 'button' );
+            c.style.position = 'fixed';
+            c.id = buttonID;
+            c.style.zIndex = 10000;
+            c.style.top = 'calc(50% + 300px)';
+            c.style.left = 'calc(50% + 350px)';
+            c.innerHTML = 'Close';
+            c.style.backgroundColor = '#333';
+            c.style.color = '#ccc';
+            c.onclick = function(){
+                a3q_Unload();
+            };
+            var e = document.createElement('button');
+            e.style.position = 'fixed';
+            e.id = buttonID;
+            e.style.zIndex = 10000;
+            e.style.top = 'calc(50% + 300px)';
+            e.style.left = 'calc(0% + 50px)';
+            e.innerHTML = 'Run';
+            e.style.backgroundColor = '#333';
+            e.style.color = '#ccc';
+            e.onclick = () => {
+                eval(d.innerText);
+            };
+            document.body.appendChild(c);
+            document.body.appendChild(e);
+        }
+    })();
+}
+
+bs6.onclick = () => {
+    javascript
+}
+
+gameframe.style.display = 'none'
+bs7.onclick = () => {
+    if (gameframe.style.display === 'block') {
+        gameframe.style.display = 'none';
+    } else {
+        gameframe.style.display = 'block';
+    }
+}
+
+bs8.onclick = () => {
+  let stylething = document.createElement('style');
+  document.head.appendChild(stylething);
+  let mainCommand = document.createElement('div');
+  mainCommand.id = 'mainCommand';
+  document.body.appendChild(mainCommand);
+  mainCommand.appendChild(style);
+  let goback = document.createElement('button');
+  goback.id = 'goback';
+  let console = document.createElement('input');
+  let box = document.createElement('div');
+  console.id = 'console';
+  box.id = 'box';
+  mainCommand.appendChild(console);
+  mainCommand.appendChild(box);
+  console.placeholder = 'Crwn help';
+  goback.style.display = '';
+  goback.textContent = 'Go back';
+  mainCommand.appendChild(goback);
+  goback.onclick = () => {
+    mainCommand.style.display = 'none'
+  }
+  stylething.textContent = `
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+#console {
+  width: 250px !important;
+  border-style: none;
+  height: 50px !important;
+  background-color: black;
+  color: green;
+  font-family: 'Open Sans';
+  margin: auto auto;
+}
+#console::placeholder {
+  color: green;
+  font-family: 'Open Sans';
+}
+#goback {
+z-index: 999999 !important;
+}
+#box {
+  color: green;
+  width: 250px !important ;
+  height: 250px !important;
+  background-color: black;
+  margin: auto auto;
+  padding: 5px;
+  font-family: 'Open Sans';
+  border-style: none;
+ overflow-y: scroll; 
+}
+`
+  console.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      var extra = "";
+      let output = document.createElement('p')
+      output.textContent = console.value
+      box.appendChild(output)
+      if (console.value.includes('crwn')) {
+        output.value = console.value
+      }
+      else {
+        output.textContent = 'Unknown command ~ ' + console.value + '~'
+        output.style.color = 'red'
+      }
+      if (console.value == 'crwn console blue') {
+        output.textContent = 'Changed console theme to blue'
+        box.style.backgroundColor = 'blue'
+      }
+      else if (console.value == 'crwn console green') {
+        output.value = console.value
+        output.textContent = 'Changed console theme to green'
+        box.style.backgroundColor = 'green'
+      }
+      else if (console.value == 'crwn custom theme') {
+        let bozo = prompt('Enter Image URL')
+        output.value = console.value
+        document.body.style.backgroundImage = 'url(' + bozo + ')';
+        output.textContent = 'Added custom theme to page'
+      }
+      else if (console.value == 'crwn new') {
+        output.textContent = "if (console.value == ~command- name-here~ { code here } else {output.textContent ~Unknown command~ ' + console.value + ''' output.style.color = 'red'}"
+      }
+      else if (console.value == 'crwn edit') {
+        javascript: document.body.contentEditable = true; document.designMode = 'on'; void 0;
+        output.textContent = 'Edit Mode turned on.'
+      }
+      else if (console.value == 'crwn create cmd') {
+        let name = prompt('Name your command')
+        let prefix = 'crwn'
+        let func = prompt('Paste your JS code. Do crwn new for the basic command creation guide.')
+        let store = prefix + ' ' + name
+        extra = store;
+        eval(func);
+        window.localStorage.setItem('store', store.toString());
+        window.localStorage.setItem('func', func.toString());
+        output.textContent = 'Executed ' + store
+      }
+      else if (console.value == 'crwn proxify site') {
+        let proxify = prompt('Enter site URL')
+        var code2 = ' width=100% height=100%>'; var proxyDomain = 'https://palladium-2.anirudhiscool.repl.co/service/gateway/?url='; var codeIP1 = code1.concat(proxyDomain); var codeIP2 = codeIP1.concat(proxify); var codeIP3 = codeIP2.concat(code2); document.write(codeIP3);
+      }
+      else if (console.value == 'crwn install pall') {
+        output.textContent = 'Downloaded palladium proxy. Using repl.co domain.'
+        let proxyDomain = 'https://palladium-2.anirudhiscool.repl.co/service/gateway/?url=';
+      } 
+      
+      else if (console.value == 'crwn 3d') {
+        output.textContent = '3D ifyed!'
+      }
+      else if (console.value == 'crwn delete css') {
+        mainframe.style.display = 'none'
+        javascript:(function(){var i,l,styles = document.styleSheets;for(i=0,l=styles.length;i<l;i++){styles[i].disabled = true;}})()
+      }
+      else if (console.value == 'crwn calc') {
+        javascript:eval('function calc(){_o=prompt(_t,_z);if(_o!=\'\'&&_o!=null&&_o.toUpperCase()==_o.toLowerCase())_z=eval(_o);}');_t='JAVASCRIPTER.NET Calculator - Input the expression to be calculated:';_z='';calc();while(_o!=''&&_o!=null&&_o.toUpperCase()==_o.toLowerCase())calc()
+      }
+      else if (console.value == 'crwn help') {
+        output.textContent = `Put crwn infront of any command: console green/blue, custom theme - makes custom theme, new, edit, create cmd, proxify site, install pall, clear cookies, delete css, calc, 3d, about:blank, ${localStorage.getItem('store')}`
+      }
+      else if (console.value == 'crwn clear cookies') {
+        output.textContent = 'Cookies cleared!'
+        javascript:(function(){document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); }); })();
+        window.localStorage.clear();
+
+        
+      }
+      else if (console.value == 'crwn about:blank') {
+        location.href = 'https://' + prompt("Link adress:");
+    }
+      else if (console.value == localStorage.getItem('store')) {
+        eval(window.localStorage.getItem('func'))
+      }
+      else {
+        output.textContent = 'Unknown command  ' + console.value + ''
+        output.style.color = 'red'
+      }
+    }
+  });
+}
+
+bs9.onclick = () => {
+    javascript:var DELAY = 1;var autoClickerStyleElement = document.createElement("style");autoClickerStyleElement.innerHTML="*{cursor: crosshair !important;}";document.body.appendChild(autoClickerStyleElement);function addClicker(e) {if(!e.isTrusted) {return;}if(e.target.classList.contains("auto-clicker-target")) {e.target.classList.remove("auto-clicker-target");} else {e.target.classList.add("auto-clicker-target");}document.body.removeChild(autoClickerStyleElement);document.body.removeEventListener("click", addClicker);e.preventDefault();autoClick(e.target);}function autoClick(element) {if(element.classList.contains("auto-clicker-target")) {element.click();setTimeout(function(){ autoClick(element); }, DELAY);}}document.body.addEventListener("click", addClicker, 0);
+}
+
+gt1.onclick = () => {
+    javascript:Q=64;m=b=Q*Q;a=[P=l=u=d=p=S=w=0];u=89;f=(h=j=t=(b+Q)/2)-1;(B=(D=document).body).appendChild(x=D.createElement('p'));(X=x.style).position='fixed';X.left=X.top=0;X.background='#FFF';x.innerHTML='<p></p><canvas>';v=(s=x.childNodes)[0];(s=s[1]).width=s.height=5*Q;c=s.getContext('2d'); onkeydown=onblur=F=function(e,g){g?a[f]?(w+=m,f=Math.random(l+=8)*(R=Q-2)*R|(u=0),F(f+=Q+1+2*(f/R|0),g)):F(f):0>e?(l?--l:(y=t,t=a[t]-2,F(y)),S+=(w*=0.8)/4,m=999/(u++ +10),a[h+=[-1,-Q,1,Q][d=p]]?B.removeChild(x,alert('Game Over')):(F(h),F(e,j=h),v.innerHTML=P?(setTimeout(F,50,e,0),S|0):'Press P')):-e?(y=(a[e]=e<Q|e>=Q*Q-Q|!(e%Q)|e%Q==Q-1|2*(e==h))+(e==f),e==h&&(a[j]=2+h),c.fillStyle='hsl('+99*!a[e]+','+2*m+'%,'+50*y+'%)',c.fillRect(e%Q*5,5*(e/Q|0),5,5)):isNaN(y=e.keyCode-37)|43==y?(P=y&&!P)&&F(-1): p=!P|y&-4|!(y^2^d)?p:y;return!1};for(;--b;F(b));void F(-1);
+}
+
+gt2.onclick = () => {
+    javascript:(function(){var js=document.body.appendChild(document.createElement("script"));js.onerror=function(){alert("Sorry, the script could not be loaded.")};js.src="https://rawgit.com/Krazete/bookmarklets/master/lupire.js"})();
+}
+
+gt3.onclick = () => {
+    javascript:(t=>{var s=document.createElement(t);s.type='text/java'+t;s.src='https://sheeptester.github.io/javascripts/2048.js';document.body.appendChild(s);})('script');
+}
+
+gt4.onclick = () => {
+    javascript:var s=document.createElement('script');s.type='text/javascript';s.src='https://sheeptester.github.io/thingkingland/bookmarklets/theHouse.js';document.body.appendChild(s);
+}
+
+gt5.onclick = () => {
+    javascript:t=document.title;document.title="Loading...";r=new XMLHttpRequest();r.onload=function(e){eval(e.currentTarget.responseText)};r.open("GET","https://plainsightcollection.github.io/web/wallball/ldr.js",true);r.send();undefined;
+}
+
+gt6.onclick = () => {
+    javascript:var s=document.createElement('script');s.type='text/javascript';s.onerror=function(e){alert('Failed to load the script. The site\'s Content Security Policy might be blocking it. Feel free to try again.');};document.body.appendChild(s);s.src='https://blog.roysolberg.com/js/dom2.min.js';void(0);
+}
+
+gt7.onclick = () => {
+    javascript:((function()%7Bvar%20a,b,c;c=%22https://s1g7.onrender.com/%22,b=document.createElement(%22iframe%22),b.setAttribute(%22src%22,c),b.setAttribute(%22id%22,%22rusic-modal%22),b.setAttribute(%22style%22,%22position:%20fixed;%20z-index:%20999999;%20width:100%25;%20height:100%25;%20right:%2010px;%20top:%2010px;%20border:%205px%20solid%20%238834af;%20overflow:%20hidden;%20background-color:%20%23fff;%22),a=document.getElementsByTagName(%22body%22)%5B0%5D,a.appendChild(b)%7D)).call(this)
+}
+
+style.textContent = `
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #fff;
+    --text-secondary: #E7E7E7;
+    --bg-primary: linear-gradient(143deg, rgba(2,0,36,1) 0%, rgba(67,124,208,1) 0%, rgba(73,224,255,1) 100%);
+    --bg-secondary: lightblue;
+    --transition-speed: 600ms;
+  }
+.dark {
+    --text-primary: #fff;
+    --text-secondary: #ececec;
+    --bg-primary: linear-gradient(180deg, rgba(40,40,40,1) 48%, rgba(0,0,0,1) 96%);
+    --bg-secondary: #141418;
+    background-color: #1f2223;
+  }
+  
+  .light {
+    --text-primary: #fff;
+    --text-secondary: #E7E7E7;
+    --bg-primary: linear-gradient(143deg, rgba(2,0,36,1) 0%, rgba(67,124,208,1) 0%, rgba(73,224,255,1) 100%);
+    --bg-secondary: lightblue;
+    background: linear-gradient(143deg, rgba(2,0,36,1) 0%, rgba(67,124,208,1) 0%, rgba(73,224,255,1) 100%);
+  }
+  
+  .solar {
+    --text-primary: #fff;
+    --text-secondary: #35535c;
+    --bg-primary: linear-gradient(180deg, rgba(247,247,247,0.8043811274509804) 0%, rgba(139,214,110,1) 0%, rgba(29,128,8,1) 100%);
+    --bg-secondary: #fefefe;
+    color: black;
+  }
+#close {
+    background: #FF5D5B;
+    border: 4px solid #CF544D;
+    border-radius: 100%;
+    max-height: 10px;
+    right: 45px;
+    padding: 3px;
+    position: absolute;
+}
+#close :before, #close :after {
+    background: #460100;
+}
+#min {
+    background: #FFBB39;
+    border: 4px solid #CFA64F;
+    border-radius: 100%;
+    max-height: 10px;
+    right: 25px;
+    padding: 3px;
+    position: absolute;
+}
+#min :before, #min :after {
+    background: #460100;
+}
+#open {
+    background: #00CD4F;
+    border: 4px solid #0EA642;
+    border-radius: 100%;
+    max-height: 10px;
+    right: 5px;
+    padding: 3px;
+    position: absolute;
+}
+#open :before, #open :after {
+    background: #024D0F;
+}
+#gameFrame {
+    width: 736px;
+    height: fit-content;
+    position: absolute;
+
+}
+#topBar {
+    top: 15px;
+    position: relative;
+    background: linear-gradient(90deg, rgba(247,247,247,0.8043811274509804) 0%, rgba(237,237,237,0.7539609593837535) 44%, rgba(210,210,210,0.7007396708683473) 100%);    
+    width: 736px;
+    z-index: 100002;
+    height: 15px;
+    cursor: move;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#minBar {
+    bottom: -5px;
+    left: 50px;
+    position: fixed;
+    width: 250px;
+    height: 25px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 8px;
+    z-index: 20;
+    text-align: center;
+    font-family: Inter,-apple-system,system-ui,'Segoe UI',Helvetica,Arial,sans-serif;
+    background: rgb(247,247,247);
+    background: linear-gradient(90deg, rgba(247,247,247,0.8043811274509804) 0%, rgba(237,237,237,0.7539609593837535) 44%, rgba(210,210,210,0.7007396708683473) 100%);
+    animation-name: slidein;
+    animation-duration: 1s;
+}
+p, h1 {
+    color: var(--text-primary);
+}
+#mainClient {
+    background: var(--bg-primary);
+    width: 800px;
+    height: 600px;
+    border-radius: 10px;
+    animation-name: slidein;
+    animation-duration: 2s;
+    text-align: center;
+    margin: auto auto;
+    position: fixed;
+    overflow: auto;
+    left: var(--x-axis, 2rem);
+    top: var(--y-axis, 2rem);
+    z-index: 10000; 
+    box-shadow: 5px 10px 18px #888888;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 10px;
+    font-family: Inter,-apple-system,system-ui,'Segoe UI',Helvetica,Arial,sans-serif !important;
+    color: var(--text-primary) !important;
+  }
+  #mainCommand {
+    background: black;
+    width: 800px;
+    height: 600px;
+    border-radius: 10px;
+    animation-name: slidein;
+    animation-duration: 2s;
+    text-align: center;
+    margin: auto auto;
+    position: fixed;
+    overflow: auto;
+    top: var(--x-axis, 2rem);
+    left: var(--y-axis, 2rem);
+    z-index: 100000; 
+    box-shadow: 5px 10px 18px #888888;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  #title, #author {
+    color: var(--text-primary);
+    font-family: 'Helvetica';
+    padding: 10px;
+  }
+  #btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7, #btn8, #btn9, #btn10, #gt1, #gt2, #gt3, #gt4, #gt5, #gt6 {
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #F82C79;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    margin: auto auto;
+    font-family: Inter,-apple-system,system-ui,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+    #btn1:hover,#btn2:hover,#btn1:hover, #btn3:hover, #btn4:hover, #btn5:hover, #btn6:hover, #btn7:hover, #btn8:hover, #btn9:hover, #btn10:hover, #gt1:hover, #gt2:hover, #gt3:hover, #gt4:hover, #gt5:hover, #gt6:hover {
+      background-color: #E52A70;
+      opacity: 1;
+      transform: translateY(0);
+      transition-duration: .35s;
+    }
+    #btn1:active, #btn2:active, #btn3:active, #btn4:active, #btn5:active, #btn6:active, #btn7:active, #btn8:active, #btn9:active, #btn10:active, #gt1:active, #gt2:active, #gt3:active, #gt4:active, #gt5:active, #gt6:active {
+      transform: translateY(2px);
+      transition-duration: .35s;
+    }
+    @keyframes slidein {
+      0% {
+        opacity: 0%
+      } 
+      100% {
+        opactiy: 100%
+      }
+    }
+`
+
